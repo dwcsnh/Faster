@@ -14,6 +14,7 @@
 #include<SDL_image.h>
 #include<SDL_mixer.h>
 
+//Game variable
 static SDL_Window* gameWindow = NULL;
 static SDL_Renderer* gameScreen = NULL;
 static SDL_Event gameEvent;
@@ -47,6 +48,7 @@ const std::string FONT_PATH = "pixelstyle.ttf";
 
 // score
 const std::string highScoreFilePath = "highscore//highscore.txt";
+
 typedef struct Input
 {
 	int left;
