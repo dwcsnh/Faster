@@ -265,8 +265,8 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 	{
 		int minHeight = (frameHeight - 36) < TILE_SIZE ? (frameHeight - 36) : TILE_SIZE;
 
-		x1Index = (xPos + xStep + 12) / TILE_SIZE;
-		x2Index = (xPos + xStep + frameWidth - 10) / TILE_SIZE;
+		x1Index = (xPos + xStep + 12) / TILE_SIZE; // to fit the corgi's butt
+		x2Index = (xPos + xStep + frameWidth - 10) / TILE_SIZE; // to fit the corgi's mouth
 
 		y1Index = (yPos + 36) / TILE_SIZE;
 		y2Index = (yPos + 36 + minHeight - 1) / TILE_SIZE;
@@ -287,7 +287,7 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 		{
 			if (mapData.tile[y1Index][x1Index] != BLANK_TILE or mapData.tile[y2Index][x1Index] != BLANK_TILE)
 			{
-				xPos = (x1Index + 1) * TILE_SIZE;
+				xPos = (x1Index + 1) * TILE_SIZE - 4;
 				xStep = 0;
 			}
 		}
@@ -355,7 +355,7 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 		{
 			if (mapData.tile[y1Index][x1Index] != BLANK_TILE or mapData.tile[y1Index][x2Index] != BLANK_TILE)
 			{
-				yPos = (y1Index + 1) * TILE_SIZE;
+				yPos = (y1Index + 1) * TILE_SIZE - 40; // - 40 so that when corgi is renderer, its head will be close to the tile that it collides
 				yStep = 0;
 			}
 		}

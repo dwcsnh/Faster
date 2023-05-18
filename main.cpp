@@ -102,7 +102,7 @@ play_again:
 		
 		if (scrollingOffset > 1440 * mapLoaded - SCREEN_WIDTH)
 		{
-			int num = rand() % 3 + 1;
+			int num = rand() % 4 + 1;
 			std::string mapPath = "map/infiniteMap";
 			std::string mapIndex = std::to_string(num);
 			mapPath += mapIndex;
