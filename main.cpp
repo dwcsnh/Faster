@@ -84,7 +84,7 @@ play_again:
 		timer.start();
 		if (playMusic == 0 and start == 1)
 		{
-			Mix_PlayMusic(backgroundMusic, 1);
+			Mix_PlayMusic(backgroundMusic, 0);
 			playMusic = 1;
 		}
 		if (Mix_PlayingMusic() == 0)
@@ -169,7 +169,7 @@ play_again:
 
 		if (gameOver == 1)
 		{
-			Mix_PausedMusic();
+			Mix_PauseMusic();
 			int ending = gameMenu.GameOverNotification(gameScreen, gameFont, "asset//game over background.png", "Play Again", "Exit", score, highScore, buttonClickSFX);
 
 			if (ending == 1) {
@@ -258,6 +258,11 @@ bool InitData()
 					else
 					{
 						std::cout << "Initialize font successfully!" << std::endl;
+						Mix_Init(MIX_INIT_MP3);
+						if (Mix_Init(MIX_INIT_MP3) == -0)
+						{
+							return false;
+						}
 						if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
 						{
 							return false;
