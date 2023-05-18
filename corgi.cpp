@@ -355,7 +355,7 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 		{
 			if (mapData.tile[y1Index][x1Index] != BLANK_TILE or mapData.tile[y1Index][x2Index] != BLANK_TILE)
 			{
-				yPos = (y1Index + 1) * TILE_SIZE - 40; // - 40 so that when corgi is renderer, its head will be close to the tile that it collides
+				yPos = (y1Index + 1) * TILE_SIZE - 34; // - 40 so that when corgi is renderer, its head will be close to the tile that it collides
 				yStep = 0;
 			}
 		}
