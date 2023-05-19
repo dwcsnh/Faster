@@ -20,7 +20,7 @@ static SDL_Renderer* gameScreen = NULL;
 static SDL_Event gameEvent;
 static TTF_Font* gameFont;
 static TTF_Font* scoreFont;
-static Mix_Chunk* runningSFX;
+static Mix_Chunk* electrocutedSFX;
 static Mix_Chunk* jumpingSFX;
 static Mix_Chunk* buttonClickSFX;
 static Mix_Chunk* gameOverSFX;

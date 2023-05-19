@@ -9,15 +9,16 @@ Corgi::Corgi()
 	yStep = 0;
 	frameWidth = 0;
 	frameHeight = 0;
-	corgiStatus = -1;
+	corgiStatus = WALK_RIGHT;
 	inputType.right = 0;
 	inputType.left = 0;
 	inputType.jump = 0;
 	inputType.left = 0;
 	onGround = false;
-	redundantX = 0;
-	redundantY = 0;
-	middle = 0;
+	electrocuted = false;
+	rip = false;
+	sfxPlayed = false;
+
 }
 
 Corgi::~Corgi()
@@ -82,6 +83,25 @@ void Corgi::Show(SDL_Renderer* screen, int scrollingOffset)
 	{
 		LoadImg("asset//corgi falling to the left.png", screen);
 		frameClipIndex++;
+	}
+	if (electrocuted == true and corgiStatus == WALK_RIGHT)
+	{
+		LoadImg("asset//right electrocuted corgi.png", screen);
+		frameClipIndex++;
+		if (frameClipIndex >= 32)
+		{
+			rip = true;
+		}
+
+	}
+	if (electrocuted == true and corgiStatus == WALK_LEFT)
+	{
+		LoadImg("asset//left electrocuted corgi.png", screen);
+		frameClipIndex++;
+		if (frameClipIndex >= 32)
+		{
+			rip = true;
+		}
 	}
 	else if (scrollingOffset == 0)
 	{
@@ -205,7 +225,7 @@ void Corgi::HandleInputAction(SDL_Event events, SDL_Renderer* screen, int scroll
 	
 }
 
-void Corgi::HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx)
+void Corgi::HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1)
 {
 	xStep = 0;
 	yStep += GRAVITY;
@@ -237,10 +257,10 @@ void Corgi::HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOv
 	xPos += xStep;
 	yPos += yStep;
 
-	CheckCollisionWithMap(mapData, scrollingOffset, gameOver, sfx);
+	CheckCollisionWithMap(mapData, scrollingOffset, gameOver, sfx, sfx1);
 }
 
-void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx)
+void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1)
 {
 	int x1Index = 0; // Index of corgi image's left
 	int x2Index = 0; // Index of corgi image's right
@@ -362,11 +382,27 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 	}
 
 	// check if corgi's out of map dimension
-
-	if (xPos - 40 < scrollingOffset or rect.y > SCREEN_HEIGHT + 100)
+	if (rect.y > SCREEN_HEIGHT + 100)
 	{
 		gameOver = 1;
 		Mix_PlayChannel(-1, sfx, 0);
 	}
 
+	// check if corgi's striked by lightning
+	if (xPos - 70 < scrollingOffset)
+	{
+		if (sfxPlayed == false)
+		{
+			Mix_PlayChannel(-1, sfx1, 0);
+			sfxPlayed = true;
+		}
+
+		electrocuted = true;
+		
+		if (rip == true)
+		{
+			gameOver = 1;
+			Mix_PlayChannel(-1, sfx, 0);
+		}
+	}
 }

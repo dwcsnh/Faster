@@ -20,18 +20,9 @@ public:
 	void Show(SDL_Renderer* des, int scrollingOffset);
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen, int scrollingOffset, Mix_Chunk* sfx);
 	void SetClips(); 
-	void HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx);
-	void CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx);
-	void SetRedundantXY(const int& mapX, const int mapY)
-	{
-		redundantX = mapX;
-		redundantY = mapY;
-	}
+	void HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1);
+	void CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1);
 	void CenterCorgiOnMap(Map& mapData, int scrollingOffset);
-	bool GetMiddleStatus()
-	{
-		return middle;
-	}
 	float GetXPosition()
 	{
 		return xPos;
@@ -52,10 +43,9 @@ private:
 	int frameClipIndex;
 	int corgiStatus;
 	bool onGround;
-	bool middle;
-
-	int redundantX;
-	int redundantY;
+	bool electrocuted;
+	bool rip;
+	bool sfxPlayed;
 };
 
 #endif 

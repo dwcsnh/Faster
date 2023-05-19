@@ -133,7 +133,7 @@ play_again:
 
 		gameMap.DrawMap(gameScreen, scrollingOffset);
 		
-		gamePlayer.HandlePlayerMovements(mapData, scrollingOffset, gameOver, gameOverSFX);
+		gamePlayer.HandlePlayerMovements(mapData, scrollingOffset, gameOver, gameOverSFX, electrocutedSFX);
 
 		score = (gamePlayer.GetXPosition() - 96) / 48;
 		
@@ -267,6 +267,7 @@ bool InitData()
 						{
 							return false;
 						}
+						electrocutedSFX = Mix_LoadWAV("SFX//electrocutedSFX.wav");
 						jumpingSFX = Mix_LoadWAV("SFX//Jump.wav");
 						gameOverSFX = Mix_LoadWAV("SFX//Game Over.wav");
 						buttonClickSFX = Mix_LoadWAV("SFX//Game Click.wav");
