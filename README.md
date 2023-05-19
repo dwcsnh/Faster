@@ -8,7 +8,9 @@ I also "took inspiration" from a free map tileset on itch.io and redrawn it.
 
 # Game Play and Control
 Use [a] or right arrow to move corgi to the right.
+
 Use [d] or right arrow to move corgi to the left.
+
 Use [w] or right arrow to make corgi jump.
 
 The gameplay is quite simple. You use the above directional keys to control a corgi. If the corgi is fall out of the map, or is striked by lightning, you lose.
