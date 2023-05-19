@@ -16,7 +16,7 @@ Corgi::Corgi()
 	inputType.left = 0;
 	onGround = false;
 	electrocuted = false;
-	rip = false;
+	rip = 0;
 	sfxPlayed = false;
 
 }
@@ -90,7 +90,7 @@ void Corgi::Show(SDL_Renderer* screen, int scrollingOffset)
 		frameClipIndex++;
 		if (frameClipIndex >= 32)
 		{
-			rip = true;
+			rip ++;
 		}
 
 	}
@@ -100,7 +100,7 @@ void Corgi::Show(SDL_Renderer* screen, int scrollingOffset)
 		frameClipIndex++;
 		if (frameClipIndex >= 32)
 		{
-			rip = true;
+			rip ++;
 		}
 	}
 	else if (scrollingOffset == 0)
@@ -399,7 +399,7 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 		electrocuted = true;
 		
-		if (rip == true)
+		if (rip == 2)
 		{
 			gameOver = 1;
 			Mix_PlayChannel(-1, sfx, 0);

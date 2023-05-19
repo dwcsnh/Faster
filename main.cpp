@@ -55,6 +55,7 @@ play_again:
 	int mapLoaded = 1;
 	int score = 0;
 	int resume = 0;
+	int pause = 0;
 	int playMusic = 0;
 	std::vector<Attack*> ThreatList;
 
@@ -158,7 +159,14 @@ play_again:
 		}
 		if (resume == 1)
 		{
+			Mix_PauseMusic();
+			pause = 1;
 			resume = gameMenu.ResumeGame(gameScreen, gameFont, buttonClickSFX);
+		}
+		if (resume == 0 and pause == 1)
+		{
+			Mix_ResumeMusic();
+			pause = 0;
 		}
 		else if (resume == 2)
 		{

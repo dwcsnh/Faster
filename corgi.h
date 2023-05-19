@@ -44,7 +44,7 @@ private:
 	int corgiStatus;
 	bool onGround;
 	bool electrocuted;
-	bool rip;
+	int rip;
 	bool sfxPlayed;
 };
 
