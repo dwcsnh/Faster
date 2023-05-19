@@ -30,6 +30,7 @@ play_again:
 		return -1;
 	}
 
+	//Show menu
 	int entrance = 0;
 	bool isQuit = false;
 	Menu gameMenu;
@@ -47,7 +48,7 @@ play_again:
 		}
 	}
 
-	int ans = 0;
+	// Define variables used in the game loop
 	int gameOver = 0;
 	Timer timer;
 	int start = 0;
@@ -83,6 +84,7 @@ play_again:
 	while (isQuit == false)
 	{
 		timer.start();
+	//Play background mmusic
 		if (playMusic == 0 and start == 1)
 		{
 			Mix_PlayMusic(backgroundMusic, 0);
@@ -92,6 +94,8 @@ play_again:
 		{
 			playMusic = 0;
 		}
+
+	// Auto scroll map
 		if (gamePlayer.GetXPosition() > scrollingOffset + SCREEN_WIDTH / 2 and start == 1 and resume == 0)
 		{
 			scrollingOffset += PLAYER_SPEED;
@@ -101,6 +105,7 @@ play_again:
 			scrollingOffset += 5;
 		}
 		
+	// Load random new map when corgi reachs a new map
 		if (scrollingOffset > 1440 * mapLoaded - SCREEN_WIDTH)
 		{
 			int num = rand() % 4 + 1;
@@ -130,16 +135,16 @@ play_again:
 
 		gameBackground.Render(gameScreen);
 
+	// Draw map
 		Map mapData = gameMap.GetMap();
-
 		gameMap.DrawMap(gameScreen, scrollingOffset);
 		
+	// Handle player movements and draw player
 		gamePlayer.HandlePlayerMovements(mapData, scrollingOffset, gameOver, gameOverSFX, electrocutedSFX);
-
-		score = (gamePlayer.GetXPosition() - 96) / 48;
-		
 		gamePlayer.Show(gameScreen, scrollingOffset);
 
+	// Show score
+		score = (gamePlayer.GetXPosition() - 96) / 48;
 		if (start == 1)
 		{
 			gameMenu.ShowScore(gameScreen, scoreFont, score, highScore);
@@ -153,10 +158,13 @@ play_again:
 			}
 		}
 
+	// Press any key to start game
 		if (start == 0)
 		{
 			start = gameMenu.StartGame(gameScreen, gameFont, buttonClickSFX);
 		}
+
+	// Resume game
 		if (resume == 1)
 		{
 			Mix_PauseMusic();
@@ -173,7 +181,7 @@ play_again:
 			isQuit = true;
 		}
 
-		//show result
+	// Show result when game is over
 
 		if (gameOver == 1)
 		{
@@ -192,6 +200,7 @@ play_again:
 
 		SDL_RenderPresent(gameScreen);
 
+	// FPS
 		int realTime = timer.GetTick();
 		int secondPerLoop = 1000 / FPS;
 
