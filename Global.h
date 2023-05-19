@@ -1,5 +1,5 @@
-﻿#ifndef COMMON_FUNCTION_H
-#define COMMON_FUNCTION_H
+﻿#ifndef GLOBAL_H
+#define GLOBAL_H
 
 #include<Windows.h>
 #include<string>

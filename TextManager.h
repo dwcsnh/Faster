@@ -1,7 +1,7 @@
 #ifndef TEXT_MANAGER_H
 #define TEXT_MANAGER_H
 
-#include "CommonFunction.h"
+#include "Global.h"
 #include "BaseObject.h"
 
 class GameText : public BaseObject

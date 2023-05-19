@@ -1,6 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
-#include "CommonFunction.h"
+#include "Global.h"
 #include "BaseObject.h"
 #include "TextManager.h"
 

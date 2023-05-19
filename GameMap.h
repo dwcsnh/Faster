@@ -1,7 +1,7 @@
 #ifndef GAME_MAP_H
 #define GAME_MAP_H
 
-#include "CommonFunction.h"
+#include "Global.h"
 #include "BaseObject.h"
 
 #define MAX_TILE_TYPE 20

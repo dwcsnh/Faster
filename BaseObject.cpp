@@ -1,4 +1,4 @@
-#include "CommonFunction.h"
+#include "Global.h"
 #include "BaseObject.h"
 
 BaseObject::BaseObject()

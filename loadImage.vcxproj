@@ -135,7 +135,6 @@
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="corgi.cpp" />
     <ClCompile Include="BaseObject.cpp" />
-    <ClCompile Include="CommonFunction.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -146,7 +145,7 @@
     <ClInclude Include="Attack.h" />
     <ClInclude Include="corgi.h" />
     <ClInclude Include="BaseObject.h" />
-    <ClInclude Include="CommonFunction.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="TextManager.h" />
