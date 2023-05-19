@@ -6,3 +6,5 @@ The main character of this game is a corgi. I chose corgi because it's cute. I f
 I also "took inspiration" from a free map tileset on itch.io and redrawn it.
 
 The gameplay is quite simple. You use directional key to control a corgi. If the corgi is fall out of the map, or is striked by lightning, you lose.
+
+Thanks for spending timme reading this and I hope you enjoy the game.
