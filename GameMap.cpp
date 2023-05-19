@@ -9,9 +9,6 @@ void GameMap::LoadMap(const char* IMG_path, int mapLoaded) // thêm 1 biến ch�
 		return;
 	}
 
-	gameMap.endX = 0;
-	gameMap.endY = 0;
-
 	for (int i = 0; i < MAX_MAP_Y; i++) // read and set tile type (number) for every position on map
 	{
 		for (int j = (mapLoaded - 1) * MAX_MAP_X; j < mapLoaded * MAX_MAP_X; j++) // when reach new map -> mapLoaded++ -> load new map
@@ -19,12 +16,6 @@ void GameMap::LoadMap(const char* IMG_path, int mapLoaded) // thêm 1 biến ch�
 			fscanf_s(fp, "%d", &gameMap.tile[i][j]);
 		}
 	}
-
-	gameMap.endX = (gameMap.endX + 1) * TILE_SIZE;
-	gameMap.endY = (gameMap.endY + 1) * TILE_SIZE;
-
-	gameMap.startX = 0;
-	gameMap.startY = 0;
 
 	gameMap.fileName = IMG_path;
 	fclose(fp);
@@ -59,10 +50,8 @@ void GameMap::DrawMap(SDL_Renderer* screen, int scrollingOffset)
 		int x1Position = (scrollingOffset % TILE_SIZE) * -1; // the mising proportion of first-column tiles
 		int x2Position = x1Position + SCREEN_WIDTH + (x1Position == 0 ? 0 : TILE_SIZE);
 
-		mapY = gameMap.startY / TILE_SIZE; // check the y index of the tile that the map scrolls to
-
-		int y1Position = (gameMap.startY % TILE_SIZE) * -1; // the missing proportion of first-row tiles
-		int y2Position = y1Position + SCREEN_HEIGHT + (y1Position == 0 ? 0 : TILE_SIZE);
+		int y1Position = 0; // the missing proportion of first-row tiles
+		int y2Position = SCREEN_HEIGHT ;
 
 		for (int i = y1Position; i < y2Position; i += TILE_SIZE) // render tiles based on calculated position
 		{
@@ -81,6 +70,4 @@ void GameMap::DrawMap(SDL_Renderer* screen, int scrollingOffset)
 			}
 			mapY++;
 		}
-
-	
 }

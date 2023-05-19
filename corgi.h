@@ -22,7 +22,6 @@ public:
 	void SetClips(); 
 	void HandlePlayerMovements(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1);
 	void CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOver, Mix_Chunk* sfx, Mix_Chunk* sfx1);
-	void CenterCorgiOnMap(Map& mapData, int scrollingOffset);
 	float GetXPosition()
 	{
 		return xPos;

@@ -272,24 +272,24 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 	if (inputType.right == 0 or inputType.left == 0)
 	{
-		int minHeight = (frameHeight - 60) < TILE_SIZE ? (frameHeight - 60) : TILE_SIZE;
+		int middleRedundance = (frameHeight - 60) < TILE_SIZE ? (frameHeight - 60) : TILE_SIZE;
 
 		x1Index = (xPos + xStep + 14) / TILE_SIZE;
 		x2Index = (xPos + xStep + frameWidth) / TILE_SIZE;
 
 		y1Index = (yPos + 60) / TILE_SIZE;
-		y2Index = (yPos + 60 + minHeight - 1) / TILE_SIZE;
+		y2Index = (yPos + 60 + middleRedundance - 1) / TILE_SIZE;
 	}
 
 	if (inputType.left == 1 or inputType.right == 1)
 	{
-		int minHeight = (frameHeight - 36) < TILE_SIZE ? (frameHeight - 36) : TILE_SIZE;
+		int middleRedundance = (frameHeight - 36) < TILE_SIZE ? (frameHeight - 36) : TILE_SIZE;
 
 		x1Index = (xPos + xStep + 12) / TILE_SIZE; // to fit the corgi's butt
 		x2Index = (xPos + xStep + frameWidth - 10) / TILE_SIZE; // to fit the corgi's mouth
 
 		y1Index = (yPos + 36) / TILE_SIZE;
-		y2Index = (yPos + 36 + minHeight - 1) / TILE_SIZE;
+		y2Index = (yPos + 36 + middleRedundance - 1) / TILE_SIZE;
 	}
 
 	if (y1Index >= 0 and y2Index < MAX_MAP_Y) // Check if corgi is in map area
@@ -318,10 +318,10 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 	if ((inputType.right == 0 or inputType.left == 0) and corgiStatus == WALK_RIGHT)
 	{
-		int min_width_ = (frameWidth - 10) < TILE_SIZE ? (frameWidth - 10) : TILE_SIZE;
+		int middleRedundance = (frameWidth - 10) < TILE_SIZE ? (frameWidth - 10) : TILE_SIZE;
 
 		x1Index = (xPos + 14) / TILE_SIZE;
-		x2Index = (xPos + 14 + min_width_ ) / TILE_SIZE;
+		x2Index = (xPos + 14 + middleRedundance ) / TILE_SIZE;
 
 		y1Index = (yPos + yStep + 40) / TILE_SIZE;
 		y2Index = (yPos + yStep + frameHeight - 1) / TILE_SIZE;
@@ -329,10 +329,10 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 	if ((inputType.right == 0 or inputType.left == 0) and corgiStatus == WALK_LEFT)
 	{
-		int minWidth = (frameWidth - 14) < TILE_SIZE ? (frameWidth - 14) : TILE_SIZE;
+		int middleRedundance = (frameWidth - 14) < TILE_SIZE ? (frameWidth - 14) : TILE_SIZE;
 
 		x1Index = (xPos + 10) / TILE_SIZE;
-		x2Index = (xPos + 10 + minWidth) / TILE_SIZE;
+		x2Index = (xPos + 10 + middleRedundance) / TILE_SIZE;
 
 		y1Index = (yPos + yStep + 40) / TILE_SIZE;
 		y2Index = (yPos + yStep + frameHeight - 1) / TILE_SIZE;
@@ -340,10 +340,10 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 	if (inputType.right == 1)
 	{
-		int minWidth = (frameWidth - 14) < TILE_SIZE ? (frameWidth - 14) : TILE_SIZE;
+		int middleRedundance = (frameWidth - 14) < TILE_SIZE ? (frameWidth - 14) : TILE_SIZE;
 
 		x1Index = (xPos + 24) / TILE_SIZE;
-		x2Index = (xPos + 18 + minWidth) / TILE_SIZE;
+		x2Index = (xPos + 18 + middleRedundance) / TILE_SIZE;
 
 		y1Index = (yPos + yStep + 40) / TILE_SIZE;
 		y2Index = (yPos + yStep + frameHeight - 1) / TILE_SIZE;
@@ -351,10 +351,10 @@ void Corgi::CheckCollisionWithMap(Map& mapData, int scrollingOffset, int& gameOv
 
 	if (inputType.left == 1)
 	{
-		int minWidth = (frameWidth - 18) < TILE_SIZE ? (frameWidth - 18) : TILE_SIZE;
+		int middleRedundance = (frameWidth - 18) < TILE_SIZE ? (frameWidth - 18) : TILE_SIZE;
 
 		x1Index = (xPos + 16) / TILE_SIZE;
-		x2Index = (xPos + 14 + minWidth) / TILE_SIZE;
+		x2Index = (xPos + 14 + middleRedundance) / TILE_SIZE;
 
 		y1Index = (yPos + yStep + 40) / TILE_SIZE;
 		y2Index = (yPos + yStep + frameHeight - 1) / TILE_SIZE;

@@ -59,15 +59,8 @@ typedef struct Input
 
 typedef struct Map
 {
-	int startX; // starting rendering x position
-	int startY;
-
-	int endX; 
-	int endY;
-
 	int tile[14][2000];
 	const char* fileName;
-
 };
 
 #endif
