@@ -32,7 +32,6 @@ const int SCREEN_WIDTH = 1008;
 const int SCREEN_HEIGHT = 672;
 const int SCREEN_BPP = 32;
 const int RENDERER_DRAW_COLOR = 255;
-const std::string FONT_PATH = "pixelstyle.ttf";
 
 // Map
 #define TILE_SIZE 48
