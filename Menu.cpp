@@ -73,7 +73,7 @@ int Menu::ShowMenu(SDL_Renderer* screen, TTF_Font* font, std::string path, Mix_C
 				if (x > button1Dimension.x && x < button1Dimension.x + w1 && y > button1Dimension.y && y < button1Dimension.y + h1)
 				{
 					button1.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 0;
@@ -87,7 +87,7 @@ int Menu::ShowMenu(SDL_Renderer* screen, TTF_Font* font, std::string path, Mix_C
 				if (x > button3Dimension.x && x < button3Dimension.x + w3 && y > button3Dimension.y && y < button3Dimension.y + h3)
 				{
 					button3.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 1;
@@ -101,7 +101,7 @@ int Menu::ShowMenu(SDL_Renderer* screen, TTF_Font* font, std::string path, Mix_C
 				if (x > button2Dimension.x && x < button2Dimension.x + w2 && y > button2Dimension.y && y < button2Dimension.y + h2)
 				{
 					button2.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						BaseObject Tutorial;
@@ -154,9 +154,13 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 	button1.SetTextColor(GameText::WHITE_TEXT);
 	button1.SetText("Continue?");
 
-	GameText button2; // about
+	GameText button2; // exit
 	button2.SetTextColor(GameText::WHITE_TEXT);
 	button2.SetText("Exit");
+
+	GameText button3; // return to menu
+	button3.SetTextColor(GameText::WHITE_TEXT);
+	button3.SetText("Menu");
 
 	SDL_Event gEvent;
 	while (true)
@@ -166,7 +170,7 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 		int w1 = button1.GetTextWidth();
 		SDL_Rect button1Dimension;
 		button1Dimension.x = (SCREEN_WIDTH - w1) / 2;
-		button1Dimension.y = (SCREEN_HEIGHT - h1) / 2;
+		button1Dimension.y = (SCREEN_HEIGHT - h1) / 2 - 20;
 		button1.RenderText(screen, button1Dimension.x, button1Dimension.y);
 
 		button2.LoadText(screen, font);
@@ -174,8 +178,16 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 		int w2 = button2.GetTextWidth();
 		SDL_Rect button2Dimension;
 		button2Dimension.x = (SCREEN_WIDTH - w2) / 2;
-		button2Dimension.y = button1Dimension.y + 60;
+		button2Dimension.y = button1Dimension.y + 120;
 		button2.RenderText(screen, button2Dimension.x, button2Dimension.y);
+
+		button3.LoadText(screen, font);
+		int h3 = button3.GetTextHeight();
+		int w3 = button3.GetTextWidth();
+		SDL_Rect button3Dimension;
+		button3Dimension.x = (SCREEN_WIDTH - w3) / 2;
+		button3Dimension.y = button1Dimension.y + 60;
+		button3.RenderText(screen, button3Dimension.x, button3Dimension.y);
 
 		SDL_RenderPresent(screen);
 
@@ -193,7 +205,7 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 				if (x > button1Dimension.x && x < button1Dimension.x + w1 && y > button1Dimension.y && y < button1Dimension.y + h1)
 				{
 					button1.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 0;
@@ -207,7 +219,7 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 				if (x > button2Dimension.x && x < button2Dimension.x + w2 && y > button2Dimension.y && y < button2Dimension.y + h2)
 				{
 					button2.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 2;
@@ -218,7 +230,19 @@ int Menu::ResumeGame(SDL_Renderer* screen, TTF_Font* font, Mix_Chunk* sfx)
 					button2.SetTextColor(GameText::WHITE_TEXT);
 				}
 
-
+				if (x > button3Dimension.x && x < button3Dimension.x + w3 && y > button3Dimension.y && y < button3Dimension.y + h3)
+				{
+					button3.SetTextColor(GameText::RED_TEXT);
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
+					{
+						Mix_PlayChannel(-1, sfx, 0);
+						return 3;
+					}
+				}
+				else
+				{
+					button3.SetTextColor(GameText::WHITE_TEXT);
+				}
 			}
 		}
 
@@ -291,6 +315,8 @@ int Menu::GameOverNotification(SDL_Renderer* screen, TTF_Font* font, std::string
 	highScoreTextDimension.y = scoreTextDimension.y + 40;
 	HighScore.RenderText(screen, highScoreTextDimension.x, highScoreTextDimension.y);
 
+	SDL_Event gEvent;
+
 	while (true)
 	{
 		// play again
@@ -313,8 +339,6 @@ int Menu::GameOverNotification(SDL_Renderer* screen, TTF_Font* font, std::string
 
 		SDL_RenderPresent(screen);
 
-		SDL_Event gEvent;
-
 		while (SDL_PollEvent(&gEvent) != 0)
 		{
 			if (gEvent.type == SDL_QUIT)
@@ -329,7 +353,7 @@ int Menu::GameOverNotification(SDL_Renderer* screen, TTF_Font* font, std::string
 				if (x > button1Dimension.x && x < button1Dimension.x + w1 && y > button1Dimension.y && y < button1Dimension.y + h1)
 				{
 					button1.SetTextColor(GameText::GREEN_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 0;
@@ -343,7 +367,7 @@ int Menu::GameOverNotification(SDL_Renderer* screen, TTF_Font* font, std::string
 				if (x > button2Dimension.x && x < button2Dimension.x + w2 && y > button2Dimension.y && y < button2Dimension.y + h2)
 				{
 					button2.SetTextColor(GameText::RED_TEXT);
-					if (gEvent.button.button == SDL_BUTTON_LEFT)
+					if (gEvent.button.button == SDL_BUTTON_LEFT and gEvent.button.state == SDL_PRESSED)
 					{
 						Mix_PlayChannel(-1, sfx, 0);
 						return 1;

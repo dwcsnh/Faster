@@ -17,6 +17,7 @@ int readHighscore();
 int main(int argc, char* argv[])
 {
 	int played = 0;
+	
 play_again:
 	int highScore = readHighscore();
 	srand(time(0));
@@ -29,6 +30,7 @@ play_again:
 	{
 		return -1;
 	}
+	std::cout << "played: " << played << std::endl;
 
 	//Show menu
 	int entrance = 0;
@@ -46,6 +48,7 @@ play_again:
 			isQuit = false;
 			played++;
 		}
+		std::cout << "entrance: " << entrance << std::endl;
 	}
 
 	// Define variables used in the game loop
@@ -175,6 +178,14 @@ play_again:
 		{
 			Mix_ResumeMusic();
 			pause = 0;
+		}
+		if(resume == 3)
+		{
+			isQuit = false;
+			gameOver = 0;
+			played = 0;
+			goto play_again;
+
 		}
 		else if (resume == 2)
 		{
