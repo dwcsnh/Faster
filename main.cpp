@@ -108,7 +108,7 @@ play_again:
 	// Load random new map when corgi reachs a new map
 		if (scrollingOffset > 1440 * mapLoaded - SCREEN_WIDTH)
 		{
-			int num = rand() % 4 + 1;
+			int num = rand() % 7 + 1;
 			std::string mapPath = "map/infiniteMap";
 			std::string mapIndex = std::to_string(num);
 			mapPath += mapIndex;
