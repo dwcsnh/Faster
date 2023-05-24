@@ -22,11 +22,11 @@ Use your mouse to select options in the menu.
 
 ![Screenshot (57)](https://github.com/dwcsnh/Faster/assets/125714635/aaec57da-18bc-48b7-aa01-b75f5be60fda)
 
-Use the directional keys below to control the corgi:
+- Use the directional keys below to control the corgi:
 
-Use [a] or right arrow to move corgi to the right.
+- Use [a] or right arrow to move corgi to the right.
 
-Use [d] or right arrow to move corgi to the left.
+- Use [d] or right arrow to move corgi to the left.
 
 Use [w] or right arrow to make corgi jump.
 
@@ -36,4 +36,4 @@ To pause game when playing, press [esc].
 
 ![Screenshot (66)](https://github.com/dwcsnh/Faster/assets/125714635/f1ee1165-d64e-4560-bf2d-cf1ecc94a407)
 
-Thanks for spending timme reading this and I hope you enjoy the game.
+# Thanks for spending timme reading this and I hope you enjoy the game.
