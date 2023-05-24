@@ -22,13 +22,13 @@ Use your mouse to select options in the menu.
 
 ![Screenshot (57)](https://github.com/dwcsnh/Faster/assets/125714635/aaec57da-18bc-48b7-aa01-b75f5be60fda)
 
-- Use the directional keys below to control the corgi:
+Use the directional keys below to control the corgi:
 
 - Use [a] or right arrow to move corgi to the right.
 
 - Use [d] or right arrow to move corgi to the left.
 
-Use [w] or right arrow to make corgi jump.
+- Use [w] or right arrow to make corgi jump.
 
 ![Screenshot (67)](https://github.com/dwcsnh/Faster/assets/125714635/1a6a91d6-1920-41d1-8407-17033ef35696)
 
